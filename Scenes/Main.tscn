@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Score.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/coinAmount.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/coinSpawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/coinBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/PajatsoBox1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/PajatsoBox5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/PajatsoBox3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/wood2.jpg" type="Texture" id=9]
+
+[node name="Main" type="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = -168.0
+margin_bottom = 528.0
+rect_scale = Vector2( 1.01693, 0.575399 )
+texture = ExtResource( 9 )
+
+[node name="coinBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 768, 448 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox/StaticBody2D2" index="0"]
+texture = ExtResource( 8 )
+
+[node name="KillArea" parent="coinBox/StaticBody2D2" index="4"]
+reward = 3
+
+[node name="coinBox2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 392, 832 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox2/StaticBody2D2" index="0"]
+texture = ExtResource( 6 )
+
+[node name="KillArea" parent="coinBox2/StaticBody2D2" index="4"]
+reward = 1
+
+[node name="coinBox3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1280, 448 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox3/StaticBody2D2" index="0"]
+texture = ExtResource( 8 )
+
+[node name="KillArea" parent="coinBox3/StaticBody2D2" index="4"]
+reward = 3
+
+[node name="coinBox6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 576, 624 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox6/StaticBody2D2" index="0"]
+texture = ExtResource( 6 )
+
+[node name="KillArea" parent="coinBox6/StaticBody2D2" index="4"]
+reward = 1
+
+[node name="coinBox4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1664, 834 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox4/StaticBody2D2" index="0"]
+texture = ExtResource( 6 )
+
+[node name="KillArea" parent="coinBox4/StaticBody2D2" index="4"]
+reward = 1
+
+[node name="coinBox7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1472, 640 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox7/StaticBody2D2" index="0"]
+texture = ExtResource( 6 )
+
+[node name="KillArea" parent="coinBox7/StaticBody2D2" index="4"]
+reward = 1
+
+[node name="coinBox5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1016, 320 )
+z_index = 1
+
+[node name="PajatsoBox" parent="coinBox5/StaticBody2D2" index="0"]
+texture = ExtResource( 7 )
+
+[node name="KillArea" parent="coinBox5/StaticBody2D2" index="4"]
+reward = 5
+
+[node name="coinSpawn" parent="." instance=ExtResource( 4 )]
+position = Vector2( 72, 200 )
+
+[node name="ProgressBar" type="ProgressBar" parent="coinSpawn"]
+margin_left = 720.0
+margin_top = -168.0
+margin_right = 1112.0
+margin_bottom = -120.0
+min_value = 10.0
+max_value = 1000.0
+step = 1.0
+value = 10.0
+percent_visible = false
+
+[node name="coinAmount" parent="." instance=ExtResource( 3 )]
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 426.0
+margin_bottom = 104.0
+custom_colors/font_color = Color( 0.156863, 0.0784314, 0, 1 )
+
+[node name="Score" parent="." instance=ExtResource( 2 )]
+margin_left = 1512.0
+margin_top = 16.0
+margin_right = 1904.0
+margin_bottom = 195.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+
+[editable path="coinBox"]
+[editable path="coinBox2"]
+[editable path="coinBox3"]
+[editable path="coinBox6"]
+[editable path="coinBox4"]
+[editable path="coinBox7"]
+[editable path="coinBox5"]

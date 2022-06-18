@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PajatsoBox.png-5d55227b33cc673942ff9ce9e8d1a12b.stex"
+path="res://.import/wood1.jpg-dffcddc191839618bafbde1f318daee7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PajatsoBox.png"
-dest_files=[ "res://.import/PajatsoBox.png-5d55227b33cc673942ff9ce9e8d1a12b.stex" ]
+source_file="res://Sprites/wood1.jpg"
+dest_files=[ "res://.import/wood1.jpg-dffcddc191839618bafbde1f318daee7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
