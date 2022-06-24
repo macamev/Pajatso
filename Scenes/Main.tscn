@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Score.tscn" type="PackedScene" id=2]
@@ -9,6 +9,15 @@
 [ext_resource path="res://Sprites/PajatsoBox5.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/PajatsoBox3.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/wood2.jpg" type="Texture" id=9]
+[ext_resource path="res://NewHiScore.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Scenes/getCoins.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 52.8125, 8.15501 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 10 )
 
 [node name="Main" type="Node2D"]
 __meta__ = {
@@ -20,6 +29,9 @@ margin_right = -168.0
 margin_bottom = 528.0
 rect_scale = Vector2( 1.01693, 0.575399 )
 texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="coinBox" parent="." instance=ExtResource( 5 )]
 position = Vector2( 768, 448 )
@@ -92,18 +104,39 @@ texture = ExtResource( 7 )
 reward = 5
 
 [node name="coinSpawn" parent="." instance=ExtResource( 4 )]
-position = Vector2( 72, 200 )
+position = Vector2( 72, 256 )
 
 [node name="ProgressBar" type="ProgressBar" parent="coinSpawn"]
-margin_left = 720.0
-margin_top = -168.0
-margin_right = 1112.0
-margin_bottom = -120.0
-min_value = 10.0
-max_value = 1000.0
+margin_left = 712.0
+margin_top = -240.0
+margin_right = 1104.0
+margin_bottom = -192.0
+min_value = 200.0
+max_value = 2000.0
 step = 1.0
-value = 10.0
+value = 200.0
 percent_visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="coinSpawn"]
+position = Vector2( -96, -168 )
+rotation = -0.219599
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coinSpawn/StaticBody2D"]
+position = Vector2( 56, 216 )
+rotation = -0.157815
+shape = SubResource( 1 )
+
+[node name="getCoins" type="Button" parent="coinSpawn"]
+margin_left = 848.0
+margin_top = 704.0
+margin_right = 1027.0
+margin_bottom = 742.0
+custom_fonts/font = SubResource( 2 )
+text = "GET COINS"
+script = ExtResource( 11 )
 
 [node name="coinAmount" parent="." instance=ExtResource( 3 )]
 margin_left = 40.0
@@ -113,12 +146,14 @@ margin_bottom = 104.0
 custom_colors/font_color = Color( 0.156863, 0.0784314, 0, 1 )
 
 [node name="Score" parent="." instance=ExtResource( 2 )]
-margin_left = 1512.0
+margin_left = 1360.0
 margin_top = 16.0
-margin_right = 1904.0
+margin_right = 1752.0
 margin_bottom = 195.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
+
+[connection signal="pressed" from="coinSpawn/getCoins" to="coinSpawn" method="_on_getCoins_pressed"]
 
 [editable path="coinBox"]
 [editable path="coinBox2"]

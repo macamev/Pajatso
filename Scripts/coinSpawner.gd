@@ -3,6 +3,7 @@ extends Node2D
 const coinPath = preload("res://Scenes/coin.tscn")
 onready var coinScore = get_node("/root/Main/coinAmount")
 var coinAmount = 5
+var timeLeft = 10
 
 var rng = RandomNumberGenerator.new()
 var randSpeedX
@@ -22,11 +23,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept") && coinAmount > 0:
+	if Input.is_action_just_pressed("shoot") && coinAmount > 0:
 		spawn()
 	if coinAmount < 0:
 		coinAmount = 0
 	getProgressVelocity()
+	checkTime(delta)
 
 
 func spawn():
@@ -56,3 +58,17 @@ func getProgressVelocity():
 	if barValue.value == barValue.min_value:
 		barIsFull = false
 	return barValue.value
+
+
+func _on_getCoins_pressed():
+	if (timeLeft <= 0):
+		coinAmount += 5
+		coinScore.coins += 5
+		timeLeft = 10
+
+func checkTime(delta):
+	if timeLeft > 0:
+		timeLeft -= delta
+		$getCoins.text = str(int(round(timeLeft)))
+	if timeLeft <= 0:
+		$getCoins.text = 'GET COINS'
